@@ -1,0 +1,11 @@
+services:
+  - type: static
+    name: vcard-personal-portfolio
+    env: static
+    static:
+      buildCommand: ''
+      publishPath: .
+    routes:
+      - type: rewrite
+        source: /
+        destination: /index.html
