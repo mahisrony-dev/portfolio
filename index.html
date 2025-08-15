@@ -26,101 +26,21 @@
 </head>
 <body>
   <main>
-    
-    <aside class="sidebar" data-sidebar>
-      <div class="sidebar-info">
-        <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.jpeg" alt="Ahanaf Tahmid" width="80">
-        </figure>
-        <div class="info-content">
-          <h1 class="name" title="Richard hanrick">Ahanaf Tahmid</h1>
-          <p class="title">MASc Graduate Student, Civil Engineer</p>
-        </div>
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-      </div>
-      <div class="sidebar-info_more">
-        <div class="separator"></div>
-        <ul class="contacts-list">
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-              <a href="mailto:atahmid@unbc.ca" class="contact-link">atahmid@unbc.ca</a>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-              <a href="tel:+17788904801" class="contact-link">+1 778 890 4801</a>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="calendar-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-              <time datetime="1998-09-03">September 3</time>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-              <address>
-                Canada Office Address: Wood Innovation and Design Centre, 499 George St, Prince George, BC V2L 1R5<br>
-                Canada Home Address: 4427 Glen Shee Road, Prince George, BC, V2N 4E1
-              </address>
-            </div>
-          </li>
-        </ul>
-        <div class="separator"></div>
-        <ul class="social-list">
-          <li class="social-item">
-            <a href="https://www.facebook.com/atahmid.1219" class="social-link" target="_blank">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/ahanaftahmid" class="social-link" target="_blank">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="https://scholar.google.com/citations?user=U3xzm_gAAAAJ&hl=en" class="social-link" target="_blank">
-              <img src="./assets/images/google-scholar-icon.svg" width="16" height="16" loading="lazy" alt="Google Scholar" class="social-icon-img">
-            </a>
-          </li>
-        </ul>
-      </div>
-    </aside>
+    <div id="sidebar-placeholder"></div>
 
     <div class="main-content">
-      <nav class="navbar">
-        <ul class="navbar-list">
-          <li><a class="navbar-link active" href="index.html">About</a></li>
-          <li><a class="navbar-link" href="blog.html">Blog</a></li>
-          <li><a class="navbar-link" href="contact.html">Contact</a></li>
-        </ul>
-
-      </nav>
+      <div id="navbar-placeholder"></div>
 
       <article class="about  active" data-page="about">
 
         <header>
-          <h2 class="h2 article-title">About me</h2>
+          <h2 class="h2 article-title">Introduction</h2>
         </header>
 
         <section class="about-text">
           <p>
-            Ahanaf Tahmid is a passionate structural engineer dedicated to research, innovation, and sustainable design. With a B.Sc. in Civil Engineering and a robust academic and professional foundation, he has contributed significantly to advancing engineering knowledge. His research spans advanced materials, concrete technologies, FRPs, fiber composites, and self-healing materials, culminating in the publication of nearly 17 papers in peer-reviewed journals and conferences.
-            Currently pursuing a Master of Applied Science in Engineering, specializing in Wood and Timber Engineering at the University of Northern British Columbia (UNBC), Ahanaf serves as a Research Assistant under the guidance of Professor Thomas Tannert.
-            <!--   His ongoing research focuses on reinforcing glulam with self-tapping screws (STS), combining sustainability and innovation to tackle modern structural challenges while contributing to the development of the CSA 086 Wood Design Manual. This work underscores his commitment to creating engineering solutions.
-            Ahanaf’s professional journey includes his role as a Lecturer at Uttara University and Port City International University in Bangladesh, where he demonstrated exceptional teaching and mentoring abilities. His leadership was further exemplified during his tenure as an Engineering and Site Services Executive at British American Tobacco, where he successfully managed multidisciplinary teams, overseeing quality control and timely delivery of complex construction projects.
-            Throughout his career, he has undertaken a variety of technical responsibilities, including developing detailed structural models, reviewing project plans, conducting site inspections, generating reports, and preparing CAD designs and cost estimates. His skills extend to supervising material testing, ensuring compliance with quality standards, and utilizing advanced tools such as ETABS, AutoCAD, SAP2000.
-            Ahanaf strives to combine his technical expertise, research-driven mindset, and dedication to sustainability to contribute transformative advancements to the field of structural engineering. -->
+            Passionate and results-driven Structural Engineer with a strong focus on research, sustainable design, and advanced construction materials. Holds a Bachelor of Science in Civil Engineering, complemented by practical industry experience and a solid grasp of both theoretical and applied engineering principles.
+            Currently pursuing a Master of Applied Science (MASc) in Engineering at the University of Northern British Columbia (UNBC), with a specialization in Wood Mechanics and Timber Engineering. Serving as a Research Assistant under the supervision of  <a href="https://thomastannert.opened.ca/" class="social-link" style="display: unset; color: var(--vegas-gold);" target="_blank">Professor Thomas Tannert</a>, contributing to innovative research in timber structures and hybrid systems.
           </p>
         </section>
 
@@ -173,9 +93,6 @@
 
         </section>
 
-
-
-
         <div class="modal-container" data-modal-container>
 
           <div class="overlay" data-overlay></div>
@@ -196,9 +113,9 @@
 
             <div class="modal-content">
 
-              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+              <h4 class="h3 modal-title" data-modal-title>Ahanaf Tahmid</h4>
 
-              <time datetime="2021-06-14">14 June, 2021</time>
+              <time datetime="1998-09-03">3 Sep, 1998</time>
 
               <div data-modal-text>
                 <p>
@@ -211,14 +128,52 @@
 
         </div>
 
-
-       
-
       </article>
     </div>
   </main>
   <script src="./assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    function loadHTML(id, file, callback) {
+      fetch(file)
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById(id).innerHTML = data;
+
+          const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+          // Highlight the correct active link
+          document.querySelectorAll(`#${id} a`).forEach(link => {
+            const href = link.getAttribute("href");
+            if (href && href === currentPage) {
+              link.classList.add("active");
+
+              // If inside dropdown, highlight parent
+              const dropdownParent = link.closest(".dropdown");
+              if (dropdownParent) {
+                const parentLink = dropdownParent.querySelector(":scope > a");
+                if (parentLink) parentLink.classList.add("active");
+              }
+            }
+          });
+
+          if (typeof callback === "function") callback(); // run extra code after load
+        })
+        .catch(err => console.error(err));
+    }
+
+    // Load navbar
+    loadHTML("navbar-placeholder", "navbar.html");
+
+    // Load sidebar and THEN bind click event
+    loadHTML("sidebar-placeholder", "sidebar.html", function () {
+      const sidebar = document.querySelector("[data-sidebar]");
+      const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+      sidebarBtn.addEventListener("click", function () {
+        elementToggleFunc(sidebar);
+      });
+    });
+</script>
 </body>
 </html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahanaf Tahmid</title>
+
+  <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    
+    <div id="sidebar-placeholder"></div>
+    
+
+    <div class="main-content">
+        <div id="navbar-placeholder"></div>
+
+        <article class="background active" data-page="background">
+
+          <header>
+            <h2 class="h2 article-title">Background</h2>
+          </header>
+
+          <section class="about-text">
+            <p>
+                Grew up in Dhaka, the capital city of Bangladesh, known for its vibrant culture, rich history, and fast-paced urban life in one of the most densely populated regions of South Asia.
+            </p>
+        </section>
+        <section class="blog-posts">
+
+        <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+            <a href="#">
+
+                <figure class="blog-banner-box">
+                <img src="./assets/images/buildings_ls.jpeg" alt="image 1" loading="lazy">
+                </figure>
+
+                <!-- <div class="blog-content">
+                <p class="blog-text">
+                    Dhaka, fast-growing city renowned for its dense population and bustling urban life
+                </p>
+
+                </div> -->
+
+            </a>
+            </li>
+
+            <li class="blog-post-item">
+            <a href="#">
+
+                <figure class="blog-banner-box">
+                <img src="./assets/images/urban_life_ls.jpeg" alt="image 2" loading="lazy">
+                </figure>
+
+                <!-- <div class="blog-content">
+
+                <div class="blog-meta">
+                    <p class="blog-category">Design</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2025-08-03">Aug 03, 2025</time>
+                </div>
+
+                <h3 class="h3 blog-item-title">Blog title</h3>
+
+                <p class="blog-text">
+                    Blog description goes here. It should be a short summary of the blog post, giving readers an idea of what to expect.
+                </p>
+
+                </div> -->
+
+            </a>
+            </li>
+
+        </ul>
+
+        <ul class="blog-posts-list" style="margin-top: 2rem;">
+
+            <li class="blog-post-item">
+            <a href="#">
+
+                <figure class="blog-banner-box">
+                <img src="./assets/images/boat_tree.jpeg" alt="image 1" loading="lazy">
+                </figure>
+
+                <!-- <div class="blog-content">
+
+                <p class="blog-text">
+                    Dhaka, the bustling capital of Bangladesh, is one of the most densely populated cities in the world, characterized by its tightly packed buildings, vibrant streets, and a dynamic blend of tradition and rapid urban growth
+                </p>
+
+                </div> -->
+
+            </a>
+            </li>
+
+            <li class="blog-post-item">
+            <a href="#">
+
+                <figure class="blog-banner-box">
+                <img src="./assets/images/du_raju.jpeg" alt="image 2" loading="lazy">
+                </figure>
+
+                <!-- <div class="blog-content">
+                <p class="blog-text">
+                    Blog description goes here. It should be a short summary of the blog post, giving readers an idea of what to expect.
+                </p>
+
+                </div> -->
+
+            </a>
+            </li>
+            <li class="blog-post-item">
+            <a href="#">
+
+                <figure class="blog-banner-box">
+                <img src="./assets/images/evening_tree.jpeg" alt="image 2" loading="lazy">
+                </figure>
+
+                <!-- <div class="blog-content">
+                <p class="blog-text">
+                    Blog description goes here. It should be a short summary of the blog post, giving readers an idea of what to expect.
+                </p>
+
+                </div> -->
+
+            </a>
+            </li>
+            <li class="blog-post-item">
+            <a href="#">
+
+                <figure class="blog-banner-box">
+                <img src="./assets/images/boat.jpeg" alt="image 2" loading="lazy">
+                </figure>
+
+                <!-- <div class="blog-content">
+                <p class="blog-text">
+                    Blog description goes here. It should be a short summary of the blog post, giving readers an idea of what to expect.
+                </p>
+
+                </div> -->
+
+            </a>
+            </li>
+
+        </ul>
+
+
+        </section>
+        
+        </article>
+    </div>
+  </main>
+  <script src="./assets/js/script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    function loadHTML(id, file, callback) {
+      fetch(file)
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById(id).innerHTML = data;
+
+          const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+          // Highlight the correct active link
+          document.querySelectorAll(`#${id} a`).forEach(link => {
+            const href = link.getAttribute("href");
+            if (href && href === currentPage) {
+              link.classList.add("active");
+
+              // If inside dropdown, highlight parent
+              const dropdownParent = link.closest(".dropdown");
+              if (dropdownParent) {
+                const parentLink = dropdownParent.querySelector(":scope > a");
+                if (parentLink) parentLink.classList.add("active");
+              }
+            }
+          });
+
+          if (typeof callback === "function") callback(); // run extra code after load
+        })
+        .catch(err => console.error(err));
+    }
+
+    // Load navbar
+    loadHTML("navbar-placeholder", "navbar.html");
+
+    // Load sidebar and THEN bind click event
+    loadHTML("sidebar-placeholder", "sidebar.html", function () {
+      const sidebar = document.querySelector("[data-sidebar]");
+      const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+      sidebarBtn.addEventListener("click", function () {
+        elementToggleFunc(sidebar);
+      });
+    });
+</script>
+</body>
+</html>
