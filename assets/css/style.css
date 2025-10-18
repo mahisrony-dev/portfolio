@@ -44,9 +44,9 @@
     hsla(35, 100%, 68%, 0) 59.86%
   ), hsl(240, 2%, 13%);
   --border-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(0, 0%, 25%) 0%, 
-    hsla(0, 0%, 25%, 0) 50%
+    to bottom right,
+    var(--white-2) 0%,
+    rgba(255, 253, 246, 0) 50%
   );
   --text-gradient-yellow: linear-gradient(
     to right, 
@@ -56,18 +56,18 @@
 
   /* solid */
 
-  --jet: hsl(0, 0%, 22%);
-  --onyx: hsl(240, 1%, 17%);
-  --eerie-black-1: hsl(240, 2%, 13%);
-  --eerie-black-2: hsl(240, 2%, 12%);
-  --smoky-black: hsl(0, 0%, 7%);
-  --white-1: hsl(0, 0%, 100%);
-  --white-2: hsl(0, 0%, 98%);
-  --orange-yellow-crayola: hsl(45, 100%, 72%);
-  --vegas-gold: hsl(45, 54%, 58%);
-  --light-gray: hsl(0, 0%, 84%);
-  --light-gray-70: hsla(0, 0%, 84%, 0.7);
+  --jet: #ddd;
+  --onyx: #ccc;
+  --eerie-black-1: #fff;
+  --eerie-black-2: #fff;
+  --smoky-black: #111;
+  --white-1: #fff;
+  --white-2: #fffdf6;
+  --light-gray: #222;
+  --light-gray-70: rgba(34,34,34,0.7);
   --bittersweet-shimmer: hsl(0, 43%, 51%);
+  --vegas-gold: #c5b358;
+  
 
   /**
    * typography
@@ -110,6 +110,117 @@
   --transition-2: 0.5s ease-in-out;
 
 }
+
+/* Compact layout: reduce vertical spacing between sections */
+main { margin: 8px 8px; margin-bottom: 40px; }
+.sidebar, article { padding: 10px; border-radius: 14px; }
+.article-title { padding-bottom: 8px; margin-bottom: 8px; }
+.separator { margin: 8px 0; }
+.service, .testimonials, .clients, .timeline, .skills-list, .blog-posts, .contact-form { margin-bottom: 18px; }
+.service-item, .content-card, .project-item > a, .blog-post-item > a { padding: 12px; }
+.about-text p, .blog-text, .timeline-text { margin-bottom: 10px; }
+.testimonials-list { padding: 12px 8px; }
+
+@media (min-width: 580px) {
+  .sidebar, article { padding: 18px; }
+  main { margin-top: 40px; margin-bottom: 60px; }
+}
+
+/* Aggressive compact override: apply if you want tighter spacing */
+.compact * { transition: none !important; }
+.compact main { margin: 6px 6px; }
+.compact .article-title { margin-bottom: 4px; padding-bottom: 4px; }
+.compact .separator { margin: 6px 0; height: 1px; }
+.compact h2, .compact h3, .compact h4 { margin-bottom: 6px; }
+.compact .service, .compact .testimonials, .compact .clients, .compact .timeline, .compact .skills-list, .compact .blog-posts, .compact .contact-form { margin-bottom: 10px; }
+.compact .sidebar, .compact article { padding: 8px; }
+.compact .content-card, .compact .service-item, .compact .project-item > a { padding: 8px; }
+.compact .about-text p, .compact .blog-text { margin-bottom: 6px; }
+
+/* Usage: add class 'compact' to the <body> element for aggressive spacing */
+
+/* Remove background image and strip section panels to make sections flush */
+.flush * { box-shadow: none !important; }
+.flush body, .flush html { background: #fff !important; }
+.flush body { background-image: none !important; background-color: var(--white-1) !important; }
+.flush .sidebar, .flush article, .flush .content-card, .flush .service-item, .flush .blog-post-item > a {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 6px 4px !important;
+}
+.flush main { margin: 0; }
+.flush .separator { background: transparent; height: 0; margin: 0; }
+.flush .article-title::after { display: none; }
+.flush .contacts-list, .flush .service-list, .flush .clients-list { gap: 8px !important; }
+.flush .has-scrollbar { padding-right: 0 !important; }
+
+/* Usage: add class 'flush' on <body> to remove background and attach sections */
+
+/* --- flush-global: permanently remove page background and panel spacing --- */
+/* This override makes sections attach to each other and removes the wooden background */
+body {
+  background-image: none !important;
+  background: var(--white-1) !important;
+}
+
+main {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.sidebar, article, .content-card, .service-item, .blog-post-item > a {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 16px 18px !important; /* restore inner padding for design */
+}
+
+.separator { background: transparent !important; height: 0 !important; margin: 0 !important; }
+.article-title::after { display: none !important; }
+
+/* Reduce spacing between large sections */
+section, .service, .testimonials, .clients, .timeline, .skills-list, .blog-posts, .contact-form {
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+}
+
+/* Constrain content width and add horizontal gutters */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+/* Subtle visual separators and inner gutters to restore design hierarchy */
+section + section,
+section + .service,
+.service + .service,
+.service + .testimonials {
+  border-top: 1px solid rgba(34,34,34,0.04);
+  margin-top: 8px !important;
+}
+
+.sidebar, article {
+  padding: 18px !important;
+}
+
+.article-title { padding-bottom: 10px; margin-bottom: 10px; }
+
+.content-card, .service-item, .project-item > a, .blog-post-item > a {
+  background: transparent;
+  padding: 14px !important;
+}
+
+/* Keep scrollbars and small UI intact */
+body::-webkit-scrollbar { background: transparent; }
+
+/* End flush-global */
 
 
 
@@ -155,7 +266,13 @@ input, textarea {
 
 html { font-family: var(--ff-poppins); }
 
-body { background: var(--smoky-black); }
+body {
+  background: url("../images/connections.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #111;
+}
+
+/* (custom hero and navbar-inner styles removed) */
 
 
 
@@ -167,8 +284,9 @@ body { background: var(--smoky-black); }
 
 .sidebar,
 article {
-  background: var(--eerie-black-2);
-  border: 1px solid var(--jet);
+  background: var(--white-2);
+  border: 1px solid #ddd;
+  color: #111;
   border-radius: 20px;
   padding: 15px;
   box-shadow: var(--shadow-1);
@@ -224,7 +342,7 @@ article.active {
 .h3,
 .h4,
 .h5 {
-  color: var(--white-2);
+  color: #111;
   text-transform: capitalize;
 }
 
@@ -233,6 +351,10 @@ article.active {
 .h3 { font-size: var(--fs-2); }
 
 .h4 { font-size: var(--fs-4); }
+
+a {
+  color: var(--vegas-gold);
+}
 
 .h5 {
   font-size: var(--fs-7);
@@ -321,7 +443,10 @@ main {
   transition: var(--transition-2);
 }
 
-.sidebar.active { max-height: 440px; }
+.sidebar.active {
+  max-height: 440px;
+  background: var(--white-2);
+}
 
 .sidebar-info {
   position: relative;
@@ -337,7 +462,7 @@ main {
 }
 
 .info-content .name {
-  color: var(--white-2);
+  color: #222;
   font-size: var(--fs-3);
   font-weight: var(--fw-500);
   letter-spacing: -0.25px;
@@ -345,7 +470,7 @@ main {
 }
 
 .info-content .title {
-  color: var(--white-1);
+  color: #222;
   background: var(--onyx);
   font-size: var(--fs-8);
   font-weight: var(--fw-300);
@@ -373,7 +498,7 @@ main {
   position: absolute;
   inset: 1px;
   border-radius: inherit;
-  background: var(--bg-gradient-jet);
+  background: var(--white-2);
   transition: var(--transition-1);
   z-index: -1;
 }
@@ -382,7 +507,7 @@ main {
 .info_more-btn:focus { background: var(--bg-gradient-yellow-1); }
 
 .info_more-btn:hover::before,
-.info_more-btn:focus::before { background: var(--bg-gradient-yellow-2); }
+.info_more-btn:focus::before { background: var(--white-2); }
 
 .info_more-btn span { display: none; }
 
@@ -423,7 +548,7 @@ main {
 }
 
 .contact-info :is(.contact-link, time, address) {
-  color: var(--white-2);
+  color:  #222;
   font-size: var(--fs-7);
 }
 
@@ -460,9 +585,9 @@ main {
   width: 100%;
   left: 0;
   z-index: 9999;
-  background: hsla(240, 1%, 17%, 0.75);
+  background: --white-2;
+  border: 3px solid #ddd;
   backdrop-filter: blur(10px);
-  border: 1px solid var(--jet);
   border-radius: 12px 12px 0 0;
   box-shadow: var(--shadow-2);
 }
@@ -487,7 +612,7 @@ main {
 }
 
 .navbar-link {
-  color: var(--light-gray);
+  color: #222;
   font-size: var(--fs-8);
   padding: 20px 15px;
   text-decoration: none;
@@ -498,7 +623,8 @@ main {
 
 .navbar-link:hover,
 .navbar-link:focus {
-  color: var(--light-gray-70);
+  /* stronger hover: more visibly darker for clear contrast */
+  color: rgba(0,0,0,0.85);
 }
 
 .navbar-link.active {
@@ -506,13 +632,14 @@ main {
 }
 
 /* Dropdown menu */
-.dropdown-menu {
+ .dropdown-menu {
   display: none;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  background: hsla(240, 1%, 17%, 0.95);
-  border: 1px solid var(--jet);
+  /* use a neutral, slightly off-white dropdown to avoid strong cream */
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(34,34,34,0.06);
   border-radius: 8px;
   min-width: 150px;
   z-index: 10000;
@@ -529,7 +656,8 @@ main {
 }
 
 .dropdown-menu li a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  /* slightly stronger hover background for improved visibility */
+  background-color: rgba(0,0,0,0.06);
   color: var(--orange-yellow-crayola);
 }
 
@@ -577,7 +705,7 @@ main {
 .about .article-title { margin-bottom: 15px; }
 
 .about-text {
-  color: var(--light-gray);
+  color: #222;
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   line-height: 1.6;
@@ -603,7 +731,7 @@ main {
 
 .service-item {
   position: relative;
-  background: var(--border-gradient-onyx);
+  background: #fff;
   padding: 20px;
   border-radius: 14px;
   box-shadow: var(--shadow-2);
@@ -614,7 +742,7 @@ main {
   content: "";
   position: absolute;
   inset: 1px;
-  background: var(--bg-gradient-jet);
+  background: #fff;
   border-radius: inherit;
   z-index: -1;
 }
@@ -628,7 +756,7 @@ main {
 .service-item-title { margin-bottom: 7px; }
 
 .service-item-text {
-  color: var(--light-gray);
+  color: #222;
   font-size: var(--fs-6);
   font-weight: var(--fw-3);
   line-height: 1.6;
@@ -675,7 +803,7 @@ main {
 .testimonials-item-title { margin-bottom: 7px; }
 
 .testimonials-text {
-  color: var(--light-gray);
+  color: #222;
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   line-height: 1.6;
@@ -1187,7 +1315,7 @@ main {
 .blog-post-item > a:hover .blog-item-title { color: var(--orange-yellow-crayola); }
 
 .blog-text {
-  color: var(--light-gray);
+  color: #222;
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   line-height: 1.6;
@@ -1203,7 +1331,7 @@ main {
 
 .mapbox {
   position: relative;
-  height: 250px;
+  height: 500px;
   width: 100%;
   border-radius: 16px;
   margin-bottom: 30px;
@@ -1232,11 +1360,12 @@ main {
 }
 
 .form-input {
-  color: var(--white-2);
+  color: #111;
+  background: #fff;
+  border: 1px solid #ddd;
   font-size: var(--fs-6);
   font-weight: var(--fw-400);
   padding: 13px 20px;
-  border: 1px solid var(--jet);
   border-radius: 14px;
   outline: none;
 }
@@ -1528,6 +1657,9 @@ textarea.form-input::-webkit-resizer { display: none; }
     align-items: stretch;
     gap: 25px;
     padding: 30px;
+    background: #fff;
+    color: #111;
+    border: 1px solid #ddd;
     border-radius: 20px;
   }
 
@@ -1598,7 +1730,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   .mapbox {
-    height: 380px;
+    height: 500px;
     border-radius: 18px;
   }
 
@@ -1692,7 +1824,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .filter-item button {
-    color: var(--light-gray);
+    color: #222;
     font-size: var(--fs-5);
     transition: var(--transition-1);
   }
@@ -1850,18 +1982,17 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   body::-webkit-scrollbar { width: 20px; }
-
-  body::-webkit-scrollbar-track { background: var(--smoky-black); }
+  /* Make scrollbar subtle on white background: transparent track, light thumb */
+  body::-webkit-scrollbar-track { background: transparent; }
 
   body::-webkit-scrollbar-thumb {
-    border: 5px solid var(--smoky-black);
-    background: hsla(0, 0%, 100%, 0.1);
+    background: rgba(0,0,0,0.08);
     border-radius: 20px;
-    box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
-                inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
+    border: 0;
+    box-shadow: none;
   }
 
-  body::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.15); }
+  body::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.12); }
 
   body::-webkit-scrollbar-button { height: 60px; }
 
@@ -1895,6 +2026,41 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: 75%;
     margin: 0;
   }
+
+}
+
+/* Apply fixed sidebar + fluid main column globally (full-bleed on large screens) */
+main {
+  /* No max-width cap: allow full-bleed content while keeping side gutters */
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  padding-left: 20px; /* left/right gutters so sidebar isn't flush to edge */
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  flex: 0 0 280px;
+  width: 280px;
+  margin-left: 8px;
+}
+
+.main-content {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+}
+
+/* Small screens: stack sidebar and main-content vertically */
+@media (max-width: 700px) {
+  main { display: block; max-width: 100%; padding: 0 12px; }
+  .sidebar, .main-content { width: 100%; flex: none; }
+}
 
 
 
@@ -1930,6 +2096,11 @@ textarea.form-input::-webkit-resizer { display: none; }
     visibility: visible;
   }
 
+  /* Add spacing between .sidebar-info and .sidebar-info_more on non-mobile screens */
+  @media (min-width: 580px) {
+    .sidebar .sidebar-info_more { margin-top: 16px; }
+  }
+
   .contacts-list { grid-template-columns: 1fr; }
 
   .contact-info :is(.contact-link) {
@@ -1950,12 +2121,16 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .social-list { justify-content: center; }
 
+  /* Slightly lower the social icons inside the sidebar (only margin-top) */
+  .sidebar .social-list { margin-top: 8px !important; }
+
   /**
 	 * RESUME
 	 */
 
    
 
-  .timeline-text { max-width: 700px; }
+  .timeline-text { max-width: 700px; color: #222;}
 
-}
+
+/* (navbar scrolled and footer tiles removed) */
