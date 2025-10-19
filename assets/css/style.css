@@ -2060,6 +2060,8 @@ main {
 @media (max-width: 700px) {
   main { display: block; max-width: 100%; padding: 0 12px; }
   .sidebar, .main-content { width: 100%; flex: none; }
+  /* Add small space between avatar/photo and the contacts (email) on mobile */
+  .sidebar .sidebar-info_more { margin-top: 12px; }
 }
 
 
@@ -2068,61 +2070,64 @@ main {
    * SIDEBAR
    */
 
-  .sidebar {
-    position: sticky;
-    top: 60px;
-    max-height: max-content;
-    height: 100%;
-    margin-bottom: 0;
-    padding-top: 60px;
-    z-index: 1;
+  /* Desktop/tablet: make sidebar sticky and expanded; keep mobile collapsed */
+  @media (min-width: 700px) {
+    .sidebar {
+      position: sticky;
+      top: 60px;
+      max-height: max-content;
+      height: 100%;
+      margin-bottom: 0;
+      padding-top: 60px;
+      z-index: 1;
+    }
+
+    .sidebar-info { flex-direction: column; }
+
+    .avatar-box img { width: 150px; }
+
+    .info-content .name {
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .info-content .title { margin: auto; }
+
+    .info_more-btn { display: none; }
+
+    .sidebar-info_more {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Add spacing between .sidebar-info and .sidebar-info_more on non-mobile screens */
+    @media (min-width: 580px) {
+      .sidebar .sidebar-info_more { margin-top: 16px; }
+    }
+
+    .contacts-list { grid-template-columns: 1fr; }
+
+    .contact-info :is(.contact-link) {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .contact-info :is(.contact-link, time, address) {
+      --fs-7: 14px;
+      font-weight: var(--fw-300);
+    }
+
+    .separator:last-of-type {
+      margin: 15px 0;
+      opacity: 0;
+    }
+
+    .social-list { justify-content: center; }
+
+    /* Slightly lower the social icons inside the sidebar (only margin-top) */
+    .sidebar .social-list { margin-top: 8px !important; }
   }
-
-  .sidebar-info { flex-direction: column; }
-
-  .avatar-box img { width: 150px; }
-
-  .info-content .name {
-    white-space: nowrap;
-    text-align: center;
-  }
-
-  .info-content .title { margin: auto; }
-
-  .info_more-btn { display: none; }
-
-  .sidebar-info_more {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  /* Add spacing between .sidebar-info and .sidebar-info_more on non-mobile screens */
-  @media (min-width: 580px) {
-    .sidebar .sidebar-info_more { margin-top: 16px; }
-  }
-
-  .contacts-list { grid-template-columns: 1fr; }
-
-  .contact-info :is(.contact-link) {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .contact-info :is(.contact-link, time, address) {
-    --fs-7: 14px;
-    font-weight: var(--fw-300);
-  }
-
-  .separator:last-of-type {
-    margin: 15px 0;
-    opacity: 0;
-  }
-
-  .social-list { justify-content: center; }
-
-  /* Slightly lower the social icons inside the sidebar (only margin-top) */
-  .sidebar .social-list { margin-top: 8px !important; }
 
   /**
 	 * RESUME
