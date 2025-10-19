@@ -2062,6 +2062,8 @@ main {
   .sidebar, .main-content { width: 100%; flex: none; }
   /* Add small space between avatar/photo and the contacts (email) on mobile */
   .sidebar .sidebar-info_more { margin-top: 12px; }
+  /* Allow the expanded sidebar to be taller so social icons are visible */
+  .sidebar.active { max-height: 640px; }
 }
 
 
